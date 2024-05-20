@@ -1,0 +1,90 @@
+<!-- target:content -->
+<div class="cont-wrapper" id="cont_wrapper">
+<div class="header-wrap">
+<div class="location-wrap">
+<div class="location white-bg" id="location_page"></div>
+<!-- use:userInfo -->
+</div>
+</div>
+<div class="nav-wrap-mask"></div>
+<div class="nav-wrap white-bg" id="navBar" ui="type:frd.ui.MenuCollectCont">
+<div ui="ext-permission:;" class="logo-img">
+<a><img class="logo" src="={${frd.info.logoUrl} ? ${frd.info.logoUrl} : 'images/frd/logo.svg'}" /></a>
+</div>
+<div class="nav-bar-wrap">
+<ul class="nav-bar-tree" ui="type:frd.ui.ModuleLink;id:nav-bar;">
+<label class="root">根</label>
+<!-- use:nodeList(tree=${frd.info.menuTree},level=0) -->
+</ul>
+</div>
+</div>
+<div class="cont-wrap" id="container"></div>
+</div>
+<ul class="ui-message-box" id="message_box"></ul>
+<div id="dialogSearchContainer"></div>
+<div id="dialogContainer"></div>
+<div id="dialogContainer_2"></div>
+<div id="dialogContainer_3"></div>
+<a style="display: none;" id="downloadA" download="download" href=""></a>
+<img style="display: none;" id="validateImg"></img>
+<div class="loading-before"></div>
+<div class="loading-after"></div>
+<div id="exportViewContainer"></div>
+<div id="waterMarkContainer"></div>
+<!-- target:nodeList -->
+<!-- var:level = ${level} + 1; -->
+<!-- if:${tree.length} -->
+<!-- for: ${tree} as ${item} -->
+<!-- if:${item.children.length} -->
+<ul ui="collapsed:true;id:${item.name};" class="level-${level}">
+<li ui="ext-permission:${item.permission};" class="nav-item ${item.name}-item level-${level} has-children" name="${item.name}">
+<a onclick="return false;" class="label" href=""><icon name="={${item.icon} || ${item.title}}" class="icon ${item.icon}"></icon>${item.title}</a>
+</li>
+<!-- use:nodeList(tree=${item.children},level=${level}) -->
+</ul>
+<!-- else -->
+<li ui="ext-permission:${item.permission};" class="nav-item ${item.name}-item level-${level}">
+<a ui="type:frd.ui.ModuleLinkItem;" class="label" href="${item.nodeUrl}"><icon name="={${item.icon} || ${item.title}}" class="icon ${item.icon}"></icon>${item.title}</a>
+</li>
+<!-- /if -->
+<!-- /for -->
+<!-- /if -->
+<!-- target:message-item -->
+<li ui="type:frd.ui.MessageItem;ext-link" href="">
+<span class="fas fa-bell" style="font-size: 20px; color: #0079FE; margin: 0 8px 0 12px;"></span>
+<span>消息通知提醒</span>
+<span ui="type:frd.ui.MessageDelete" class="fas fa-times right" style="font-size: 16px; color: #CCCCCC; margin: 0;width: 45px; height: 45px; line-height: 45px; text-align: center;"></span>
+</li>
+<!-- target: confirmDialog -->
+<!--//弹出层 二次确认弹框-->
+<div ui="type:dialog;id:confirmDialog;" class="ui-confirm-dialog">
+<strong>${title}</strong>
+<form onsubmit="return false;" class="ui-dialog-cont">
+<div class="content" style="padding: 15px 70px;={${content}.length < 20 ? 'text-align:center' : ''}">${content|raw}</div>
+</form>
+<div class="ui-dialog-operate tr" ui="type:control">
+<div ui="type:@cancel;" class="ui-button-medium">${cancelText}</div>
+<div ui="type:@submit;" class="ui-button-primary ui-button-medium">${confirmText}</div>
+</div>
+</div>
+<!-- target:alertDialog -->
+<!--//弹出层 提示弹框-->
+<div ui="type:dialog;id:alertDialog;" class="ui-confirm-dialog">
+<strong>${title}</strong>
+<form onsubmit="return false;" class="ui-dialog-cont" name="confirmForm">
+<div class="pop-cont edit-part">
+<div style="text-align: center; padding: 40px 40px 50px;">${content|raw}</div>
+</div>
+</form>
+<div class="ui-dialog-operate">
+<div ui="type:@cancel;" type="button" class="ui-button-primary">${confirmText}</div>
+</div>
+</div>
+<!-- target:no-result -->
+<tr>
+<td colspan="${colspan}">
+<!-- use:no-result-cont(width=${width}) -->
+</td>
+</tr>
+<!-- target:no-result-cont -->
+<div class="no-result" style="width: ${width}px">暂无数据</div>
