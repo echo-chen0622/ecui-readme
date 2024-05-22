@@ -11,6 +11,6 @@
         };
     };
 
-    document.write('<script type="text/javascript" src="_include/filter.js"></script>');
-    document.write('<script type="text/javascript" src="_include/controls.js"></script>');
+    // document.write('<script type="text/javascript" src="_include/filter.js"></script>');
+    // document.write('<script type="text/javascript" src="_include/controls.js"></script>');
 })();

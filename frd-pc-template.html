@@ -1,32 +1,10 @@
 <!-- target:content -->
-<div class="cont-wrapper" id="cont_wrapper">
-<div class="header-wrap">
-<div class="location-wrap">
-<div class="location white-bg" id="location_page"></div>
-<!-- use:userInfo -->
-</div>
-</div>
-<div class="nav-wrap-mask"></div>
-<div class="nav-wrap white-bg" id="navBar" ui="type:frd.ui.MenuCollectCont">
-<div ui="ext-permission:;" class="logo-img">
-<a><img class="logo" src="={${frd.info.logoUrl} ? ${frd.info.logoUrl} : 'images/frd/logo.svg'}" /></a>
-</div>
-<div class="nav-bar-wrap">
-<ul class="nav-bar-tree" ui="type:frd.ui.ModuleLink;id:nav-bar;">
-<label class="root">根</label>
-<!-- use:nodeList(tree=${frd.info.menuTree},level=0) -->
-</ul>
-</div>
-</div>
 <div class="cont-wrap" id="container"></div>
-</div>
 <ul class="ui-message-box" id="message_box"></ul>
 <div id="dialogSearchContainer"></div>
 <div id="dialogContainer"></div>
 <div id="dialogContainer_2"></div>
 <div id="dialogContainer_3"></div>
-<a style="display: none;" id="downloadA" download="download" href=""></a>
-<img style="display: none;" id="validateImg"></img>
 <div class="loading-before"></div>
 <div class="loading-after"></div>
 <div id="exportViewContainer"></div>
